@@ -1,0 +1,26 @@
+var populate = require("./actions/populate");
+var command = process.argv[2];
+
+if (command !== undefined){
+  switch(command){
+    case "run": // tareas programadas
+      populate.squedule_tasks();
+      break;
+    case "populate": // cada dia
+      populate.fill(); 
+      break;
+    case "cache": //cada semana
+      populate.recache(); 
+      break;
+    default:
+      console.log("Comando no soportado");
+      console.log(" - run -> corre todas las tareas programadas");
+      console.log(" - populate -> llena y/o actualiza la base de datos");
+      console.log(" - cache -> vacia y vuelve a llenar a MovieCache \n");
+      break;
+    }
+}else{
+   console.log(" - run -> corre todas las tareas programadas");
+   console.log(" - populate -> llena y/o actualiza la base de datos");
+   console.log(" - cache -> vacia y vuelve a llenar a MovieCache ");   
+}
